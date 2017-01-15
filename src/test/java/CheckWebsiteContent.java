@@ -1,4 +1,5 @@
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -9,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by ewi21211 on 8-1-2017.
  */
-public class WebsiteTitle {
+public class CheckWebsiteContent {
     private static WebDriver driver;
 
     @Test
@@ -21,13 +22,13 @@ public class WebsiteTitle {
         driver.manage().window().maximize();
         driver.get("http://www.otwn.nl");
 
-        String getTitle = driver.getTitle();
+        driver.findElement(By.linkText("MAVEN")).click();
 
-//        Check if page title is equal to expected page title
-        assertEquals("otwn – Werkgroep testautomatisering",getTitle);
+        String textOnPage = driver.findElement(By.className("single_page")).getText();
 
-//        Check if page title starts with "otwn"
-        assertTrue(getTitle.startsWith("otwn"));
+        assertTrue(textOnPage.contains("Bron: https://nl.wikipedia.org/wiki/Apache_Maven"));
+
+
 
         driver.quit();
     }
