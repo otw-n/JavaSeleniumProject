@@ -28,8 +28,6 @@ public class CheckWebsiteContent {
 
         assertTrue(textOnPage.contains("Bron: https://nl.wikipedia.org/wiki/Apache_Maven"));
 
-
-
         driver.quit();
     }
 
